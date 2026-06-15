@@ -16,10 +16,21 @@ const createLinkedList = () => {
 		size++;
 	};
 
+	const prepend = (value) => {
+		const newNode = createNode(value);
+		if (!head) {
+			head = newNode;
+		} else {
+			newNode.next = head;
+			head = newNode;
+		};
+		size++;
+	};
+
 	const displayHead = () => head;
 	const displaySize = () => size;
 
-	return { append, displayHead, displaySize };
+	return { append, prepend, displayHead, displaySize };
 };
 
 const createNode = (value = null, next = null) => {
@@ -31,7 +42,7 @@ const list = createLinkedList();
 list.append("dog");
 list.append("cat");
 list.append("tiger");
+list.prepend("salamander");
 
 console.log(list.displaySize());
 console.log(list.displayHead());
-console.log(list.head.next);
