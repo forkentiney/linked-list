@@ -71,11 +71,22 @@ const createLinkedList = () => {
 		};
 	};
 
+	const toString = () => {
+		let string = ``;
+		let current = head;
+		for (i = 0; i < size; i++) {
+			string += `( ${current.value} ) -> `;
+			current = current.next;
+		};
+		string += `null`;
+		return string;
+	};
+
 	const displayHead = () => head;
 	const displayTail = () => tail;
 	const displaySize = () => size;
 
-	return { append, prepend, displayHead, displayTail, at, pop, contains, findIndex, displaySize };
+	return { append, prepend, displayHead, displayTail, at, pop, contains, findIndex, toString, displaySize };
 };
 
 const createNode = (value = null, next = null) => {
@@ -89,4 +100,4 @@ list.append("cat");
 list.append("tiger");
 list.prepend("salamander");
 
-console.log(list.findIndex("salamander"));
+console.log(list.toString());
