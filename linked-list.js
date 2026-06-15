@@ -39,11 +39,17 @@ const createLinkedList = () => {
 		return current;
 	};
 
+	const pop = () => {
+		const oldHead = head;
+		head = head.next;
+		return `The value ${oldHead.value} has been removed. The new head is ${head.value}.`;
+	};
+
 	const displayHead = () => head;
 	const displayTail = () => tail;
 	const displaySize = () => size;
 
-	return { append, prepend, displayHead, displayTail, at, displaySize };
+	return { append, prepend, displayHead, displayTail, at, pop, displaySize };
 };
 
 const createNode = (value = null, next = null) => {
@@ -56,3 +62,5 @@ list.append("dog");
 list.append("cat");
 list.append("tiger");
 list.prepend("salamander");
+
+console.log(list.pop())
